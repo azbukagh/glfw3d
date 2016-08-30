@@ -3,6 +3,7 @@ module glfw3d.Window;
 import glfw3d.glfw3;
 import glfw3d.Main;
 import glfw3d.Monitor;
+import std.string : fromStringz;
 
 struct WindowPosition {
 	int x, y;
@@ -16,10 +17,40 @@ struct FrameSize {
 	int left, top, right, bottom;
 }
 
-class Window {
-	private {
-		GLFWwindow* window;
+struct CursorPosition {
+	double x, y;
+}
+
+class Cursor {
+	private GLFWcursor* cursor;
+
+	GLFWcursor* ptr() {
+		return this.cursor;
 	}
+
+	~this() {
+		this.destroy();
+	}
+
+	this() {
+		this(GLFW_ARROW_CURSOR);
+	}
+
+	this(int shape) {
+		this.cursor = glfwCreateStandardCursor(shape);
+	}
+
+	this(const(GLFWimage)* img, int xhot, int yhot) {
+		this.cursor = glfwCreateCursor(img, xhot, yhot);
+	}
+
+	void destroy() {
+		glfwDestroyCursor(this.cursor);
+	}
+}
+
+class Window {
+	private GLFWwindow* window;
 
 	GLFWwindow* ptr() {
 		return this.window;
@@ -221,6 +252,52 @@ class Window {
 		glfwSwapBuffers(this.window);
 	}
 
+	int getInputMode(int mode) {
+		return glfwGetInputMode(this.window, mode);
+	}
+
+	void setInputMode(int mode, int value) {
+		return glfwSetInputMode(this.window, mode, value);
+	}
+
+	int getKey(int key) {
+		return glfwGetKey(this.window, key);
+	}
+
+	int getMouseButton(int button) {
+		return glfwGetMouseButton(this.window, button);
+	}
+
+	CursorPosition getCursorPosition() {
+		double x, y;
+		glfwGetCursorPos(this.window, &x, &y);
+		return CursorPosition(x, y);
+	}
+
+	void setCursorPosition(CursorPosition c) {
+		this.setCursorPosition(c.x, c.y);
+	}
+
+	void setCursorPosition(double x, double y) {
+		glfwSetCursorPos(this.window, x, y);
+	}
+
+	void setCursor(Cursor c) {
+		this.setCursor(c.ptr());
+	}
+
+	void setCursor(GLFWcursor* c) {
+		glfwSetCursor(this.window, c);
+	}
+
+	void setClipboard(string s) {
+		glfwSetClipboardString(this.window, cast(const(char)*) s);
+	}
+
+	string getClipboard() {
+		return glfwGetClipboardString(this.window).fromStringz.idup;
+	}
+
 	GLFWwindowposfun setPositionCallback(GLFWwindowposfun cb) {
 		return glfwSetWindowPosCallback(this.window, cb);
 	}
@@ -249,6 +326,38 @@ class Window {
 		GLFWframebuffersizefun cb
 	) {
 		return glfwSetFramebufferSizeCallback(this.window, cb);
+	}
+
+	GLFWkeyfun setKeyCallback(GLFWkeyfun cb) {
+		return glfwSetKeyCallback(this.window, cb);
+	}
+
+	GLFWcharfun setCharCallback(GLFWcharfun cb) {
+		return glfwSetCharCallback(this.window, cb);
+	}
+
+	GLFWcharmodsfun setCharModsCallback(GLFWcharmodsfun cb) {
+		return glfwSetCharModsCallback(this.window, cb);
+	}
+
+	GLFWmousebuttonfun setMouseButtonCallback(GLFWmousebuttonfun cb) {
+		return glfwSetMouseButtonCallback(this.window, cb);
+	}
+
+	GLFWcursorposfun setCursorPosCallback(GLFWcursorposfun cb) {
+		return glfwSetCursorPosCallback(this.window, cb);
+	}
+
+	GLFWcursorenterfun setCursorEnterCallback(GLFWcursorenterfun cb) {
+		return glfwSetCursorEnterCallback(this.window, cb);
+	}
+
+	GLFWscrollfun setScrollCallback(GLFWscrollfun cb) {
+		return glfwSetScrollCallback(this.window, cb);
+	}
+
+	GLFWdropfun setDropCallback(GLFWdropfun cb) {
+		return glfwSetDropCallback(this.window, cb);
 	}
 }
 

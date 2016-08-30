@@ -28,7 +28,7 @@ struct GammaRamp {
 	uint size;
 }
 
-Monitor[] getMonitors() {
+Monitor[] glfw3dGetMonitors() {
 	int k;
 	GLFWmonitor** output = glfwGetMonitors(&k);
 	if(!output || k == 0)

@@ -19,13 +19,13 @@ class glfw3dException : Exception {
 	}
 }
 
-int[3] glfwVersion() {
+int[3] glfw3dVersion() {
 	int major, minor, rev;
 	glfwGetVersion(&major, &minor, &rev);
 	return [major, minor, rev];
 }
 
-string glfwVersionString() {
+string glfw3dVersionString() {
 	import std.string : fromStringz;
 	return cast(string) glfwGetVersionString().fromStringz;
 }
