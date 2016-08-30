@@ -106,14 +106,6 @@ class Window {
 				throw new glfw3dException("Window or OpenGL context creation failed");
 	}
 
-	void defaultHints() {
-		glfwDefaultWindowHints();
-	}
-
-	void hint(int hint, int value) {
-		glfwWindowHint(hint, value);
-	}
-
 	void destroy() {
 		glfwDestroyWindow(this.window);
 	}
