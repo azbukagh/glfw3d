@@ -1,7 +1,7 @@
-module glfwd.Monitor;
+module glfw3d.Monitor;
 
-import glfwd.glfw3;
-import glfwd.Main;
+import glfw3d.glfw3;
+import glfw3d.Main;
 import std.string : fromStringz;
 
 struct MonitorPosition {
@@ -32,7 +32,7 @@ Monitor[] getMonitors() {
 	int k;
 	GLFWmonitor** output = glfwGetMonitors(&k);
 	if(!output || k == 0)
-		throw new glfwdException("No monitors found");
+		throw new glfw3dException("No monitors found");
 	Monitor[] o;
 	for(int i; i < k; i++)
 		o ~= new Monitor(output[i]);
@@ -84,7 +84,7 @@ class Monitor {
 		int k;
 		const(GLFWvidmode)* output = glfwGetVideoModes(this.monitor, &k);
 		if(!output || k == 0)
-			throw new glfwdException("Cannot read vide modes");
+			throw new glfw3dException("Cannot read vide modes");
 		VideoMode[] o;
 		for(int i; i < k; i++)
 			o ~= cast(VideoMode) output[i];

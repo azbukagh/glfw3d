@@ -1,9 +1,9 @@
 import std.stdio;
-import glfwd.Main;
-import glfwd.Monitor;
+import glfw3d.Main;
+import glfw3d.Monitor;
 
 void main() {
-	glfwdInit();
+	glfw3dInit();
 
 	Monitor[] m = getMonitors();
 	writefln("%d monitor(s) found", m.length);
@@ -46,5 +46,6 @@ void main() {
 		writeln("=====================");
 	}
 
-	glfwdTerminate();
+	glfw3dTerminate();
 }
+

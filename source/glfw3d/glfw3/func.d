@@ -1,6 +1,6 @@
-module glfwd.glfw3.func;
+module glfw3d.glfw3.func;
 
-import glfwd.glfw3.type;
+import glfw3d.glfw3.type;
 
 extern(C) nothrow {
 	int glfwInit();

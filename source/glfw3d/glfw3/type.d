@@ -1,4 +1,4 @@
-module glfwd.glfw3.type;
+module glfw3d.glfw3.type;
 
 enum {
 	GLFW_VERSION_MAJOR	= 3,

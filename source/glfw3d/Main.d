@@ -1,16 +1,16 @@
-module glfwd.Main;
+module glfw3d.Main;
 
 import std.experimental.logger;
-import glfwd.glfw3;
-__gshared Logger glfwdLog;
+import glfw3d.glfw3;
+__gshared Logger glfw3dLog;
 
-alias glfwdTerminate = glfwTerminate;
+alias glfw3dTerminate = glfwTerminate;
 
 shared static this() {
-	glfwdLog = sharedLog;
+	glfw3dLog = sharedLog;
 }
 
-class glfwdException : Exception {
+class glfw3dException : Exception {
 	pure nothrow @nogc @safe this(string msg,
 		string file = __FILE__,
 		size_t line = __LINE__,
@@ -33,10 +33,10 @@ string glfwVersionString() {
 private template Error(string e) {
 	const char[] Error = 
 	"case GLFW_" ~ e ~ ":"
-	~" try {glfwdLog.log(\"GLFW error: \", desc);} catch {} break;";
+	~" try {glfw3dLog.log(\"GLFW error: \", desc);} catch {} break;";
 }
 
-extern(C) nothrow void glfwdErrorCallback(int error, const(char)* desc) {
+extern(C) nothrow void glfw3dErrorCallback(int error, const(char)* desc) {
 	switch(error) {
 		mixin(Error!("VERSION_UNAVAILABLE"));
 		mixin(Error!("NO_CURRENT_CONTEXT"));
@@ -55,17 +55,17 @@ extern(C) nothrow void glfwdErrorCallback(int error, const(char)* desc) {
 	}
 }
 
-void glfwdInit(Logger l) {
-	glfwdLog = l;
-	glfwdInit();
+void glfw3dInit(Logger l) {
+	glfw3dLog = l;
+	glfw3dInit();
 }
 
-void glfwdInit() {
+void glfw3dInit() {
 	if(!glfwInit()) {
-		glfwdTerminate();
-		throw new glfwdException("GLFW initialization failed");
+		glfw3dTerminate();
+		throw new glfw3dException("GLFW initialization failed");
 	} else {
-		glfwSetErrorCallback(&glfwdErrorCallback);
+		glfwSetErrorCallback(&glfw3dErrorCallback);
 	}
 }
 

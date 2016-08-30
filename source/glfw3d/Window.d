@@ -1,8 +1,8 @@
-module glfwd.Window;
+module glfw3d.Window;
 
-import glfwd.glfw3;
-import glfwd.Main;
-import glfwd.Monitor;
+import glfw3d.glfw3;
+import glfw3d.Main;
+import glfw3d.Monitor;
 
 struct WindowPosition {
 	int x, y;
@@ -42,22 +42,22 @@ class Window {
 	this(int width,
 		int height,
 		string title,
-		glfwd.Monitor.Monitor mon) {
+		glfw3d.Monitor.Monitor mon) {
 			this(width, height, title, mon.ptr, null);
 	}
 
 	this(int width,
 		int height,
 		string title,
-		glfwd.Window.Window share) {
+		glfw3d.Window.Window share) {
 			this(width, height, title, null, share.ptr);
 	}
 
 	this(int width,
 		int height,
 		string title,
-		glfwd.Monitor.Monitor mon,
-		glfwd.Window.Window share) {
+		glfw3d.Monitor.Monitor mon,
+		glfw3d.Window.Window share) {
 			this(width, height, title, mon.ptr, share.ptr);
 	}
 
@@ -72,7 +72,7 @@ class Window {
 				mon,
 				share);
 			if(!this.window)
-				throw new glfwdException("Window or OpenGL context creation failed");
+				throw new glfw3dException("Window or OpenGL context creation failed");
 	}
 
 	void defaultHints() {
@@ -184,13 +184,13 @@ class Window {
 		glfwFocusWindow(this.window);
 	}
 
-	glfwd.Monitor.Monitor getMonitor() {
-		return new glfwd.Monitor.Monitor(
+	glfw3d.Monitor.Monitor getMonitor() {
+		return new glfw3d.Monitor.Monitor(
 			glfwGetWindowMonitor(this.window)
 		);
 	}
 
-	void setMonitor(glfwd.Monitor.Monitor m,
+	void setMonitor(glfw3d.Monitor.Monitor m,
 		WindowPosition pos,
 		WindowSize size,
 		int refreshRate) {

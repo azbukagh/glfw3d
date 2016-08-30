@@ -3,12 +3,13 @@
 	"authors": [
 		"Azbuka"
 	],
-	"description": "glfd.Monitor example",
+	"description": "glfw3d.Monitor example",
 	"copyright": "Copyright © 2016, Azbuka",
 	"license": "MIT",
 	"dependencies": {
-		"glfwd": {
+		"glfw3d": {
 			"path": "../../"
 		}
 	}
 }
+
