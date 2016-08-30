@@ -1,0 +1,16 @@
+{
+	"name": "simple",
+	"authors": [
+		"Azbuka"
+	],
+	"dependencies": {
+		"derelict-gl3": "~>1.0.18",
+		"glfw3d": {
+			"path": "../../"
+		}
+	},
+	"description": "glfw3d example",
+	"copyright": "Copyright © 2016, Azbuka",
+	"license": "MIT"
+}
+
