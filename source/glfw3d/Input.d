@@ -4,13 +4,26 @@ import glfw3d.glfw3;
 import glfw3d.Main;
 import std.string : fromStringz;
 
+/**
+*	Params:
+*		key = GLFW_KEY_*
+*		scancode = platform-specific scancode
+*	Returns: localized name of the specified printable key
+*/
 string glfw3dGetKeyName(int key, int scancode) {
 	return glfwGetKeyName(key, scancode).fromStringz.idup;
 }
 
+/**
+*	Main joystick class
+*/
 class Joystick {
 	private int joy;
 
+	/**
+	*	Params:
+	*		j = GLFW_JOYSTIC_*
+	*/
 	this(int j) {
 		this.joy = j;
 	}

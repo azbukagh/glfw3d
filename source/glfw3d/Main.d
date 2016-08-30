@@ -4,12 +4,18 @@ import std.experimental.logger;
 import glfw3d.glfw3;
 __gshared Logger glfw3dLog;
 
+/**
+*	Terminates glfw3d
+*/
 alias glfw3dTerminate = glfwTerminate;
 
 shared static this() {
 	glfw3dLog = sharedLog;
 }
 
+/**
+*	glfw3d throws this exception on errors
+*/
 class glfw3dException : Exception {
 	pure nothrow @nogc @safe this(string msg,
 		string file = __FILE__,
@@ -19,12 +25,19 @@ class glfw3dException : Exception {
 	}
 }
 
+/**
+*	Returns GLFW version
+*	Returns: [Major, Minor, Rev]
+*/
 int[3] glfw3dVersion() {
 	int major, minor, rev;
 	glfwGetVersion(&major, &minor, &rev);
 	return [major, minor, rev];
 }
 
+/**
+*	Returns: GLFW version
+*/
 string glfw3dVersionString() {
 	import std.string : fromStringz;
 	return cast(string) glfwGetVersionString().fromStringz;
@@ -55,11 +68,17 @@ extern(C) nothrow void glfw3dErrorCallback(int error, const(char)* desc) {
 	}
 }
 
+/**
+*	Initializes glfw3d
+*	Throws: glfw3dException on error
+*	Params:
+*		l = logger for glfw3d
+*/
 void glfw3dInit(Logger l) {
 	glfw3dLog = l;
 	glfw3dInit();
 }
-
+/// ditto
 void glfw3dInit() {
 	if(!glfwInit()) {
 		glfw3dTerminate();
