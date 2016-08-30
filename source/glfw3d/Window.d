@@ -298,6 +298,10 @@ class Window {
 		return glfwGetClipboardString(this.window).fromStringz.idup;
 	}
 
+	void makeContextCurrent() {
+		glfwMakeContextCurrent(this.window);
+	}
+
 	GLFWwindowposfun setPositionCallback(GLFWwindowposfun cb) {
 		return glfwSetWindowPosCallback(this.window, cb);
 	}

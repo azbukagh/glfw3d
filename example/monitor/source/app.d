@@ -5,7 +5,7 @@ import glfw3d.Monitor;
 void main() {
 	glfw3dInit();
 
-	Monitor[] m = getMonitors();
+	Monitor[] m = glfw3dGetMonitors();
 	writefln("%d monitor(s) found", m.length);
 	writeln("=====================");
 	for(size_t i = 0; i < m.length; i++) {
