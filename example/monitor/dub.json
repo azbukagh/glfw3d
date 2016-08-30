@@ -1,0 +1,14 @@
+{
+	"name": "monitor",
+	"authors": [
+		"Azbuka"
+	],
+	"description": "glfd.Monitor example",
+	"copyright": "Copyright © 2016, Azbuka",
+	"license": "MIT",
+	"dependencies": {
+		"glfwd": {
+			"path": "../../"
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name": "glfwd",
+	"authors": [
+		"Azbuka"
+	],
+	"description": "GLFW3 wrapper for D programming language",
+	"copyright": "Copyright © 2016 Azbuka",
+	"license": "MIT",
+	"libs": [
+		"glfw3"
+	]
+}
+
