@@ -133,14 +133,16 @@ extern(C) nothrow {
 	GLFWglproc glfwGetProcAddress(const(char)* procname);
 	int glfwVulkanSupported();
 	const(char*)* glfwGetRequiredInstanceExtensions(uint* count);
-	/*GLFWvkproc glfwGetInstanceProcAddress(VkInstance instance,
-		const(char)* procname);*/
-	/*int glfwGetPhysicalDevicePresentationSupport(VkInstance instance,
-		VkPhysicalDevice device,
-		uint queuefamily);*/
-	/*VkResult glfwCreateWindowSurface(VkInstance instance,
-		GLFWwindow* window,
-		const(VkAllocationCallbacks)* allocator,
-		VkSurfaceKHR* surface);*/
+	version(GLFW3D_VULKAN) {
+		GLFWvkproc glfwGetInstanceProcAddress(VkInstance instance,
+			const(char)* procname);
+		int glfwGetPhysicalDevicePresentationSupport(VkInstance instance,
+			VkPhysicalDevice device,
+			uint queuefamily);
+		VkResult glfwCreateWindowSurface(VkInstance instance,
+			GLFWwindow* window,
+			const(VkAllocationCallbacks)* allocator,
+			VkSurfaceKHR* surface);
+	}
 }
 
