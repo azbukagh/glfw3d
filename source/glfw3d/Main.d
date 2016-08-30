@@ -50,7 +50,7 @@ extern(C) nothrow void glfw3dErrorCallback(int error, const(char)* desc) {
 		mixin(Error!("INVALID_ENUM"));
 		
 		default:
-			try {log("GLFW error: unknown");} catch {}
+			try {glfw3dLog.log("GLFW error: unknown");} catch {}
 			break;
 	}
 }
