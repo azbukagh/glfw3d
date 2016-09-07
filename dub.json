@@ -8,6 +8,12 @@
 	"license": "MIT",
 	"libs": [
 		"glfw3"
-	]
+	],
+	"buildTypes": {
+		"doc": {
+			"buildOptions": ["syntaxOnly"],
+			"dflags": ["-c", "-Xfdocs.json"]
+		}
+	}
 }
 
