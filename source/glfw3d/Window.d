@@ -514,8 +514,7 @@ class Window {
 	GLFWscrollfun setScrollCallback(GLFWscrollfun cb) {
 		return glfwSetScrollCallback(this.window, cb);
 	}
-	/// ditto
-	GLFWdropfun setDropCallback(GLFWdropfun cb) {
+	/// ditto	GLFWdropfun setDropCallback(GLFWdropfun cb) {
 		return glfwSetDropCallback(this.window, cb);
 	}
 }
