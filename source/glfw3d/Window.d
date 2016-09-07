@@ -166,6 +166,7 @@ class Window {
 	*	while(!w.shouldClose()) {
 	*		// Main app loop
 	*	}
+	*	---
 	*/
 	int shouldClose() {
 		return glfwWindowShouldClose(this.window);
@@ -514,7 +515,8 @@ class Window {
 	GLFWscrollfun setScrollCallback(GLFWscrollfun cb) {
 		return glfwSetScrollCallback(this.window, cb);
 	}
-	/// ditto	GLFWdropfun setDropCallback(GLFWdropfun cb) {
+	/// ditto
+	GLFWdropfun setDropCallback(GLFWdropfun cb) {
 		return glfwSetDropCallback(this.window, cb);
 	}
 }
