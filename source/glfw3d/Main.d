@@ -2,6 +2,7 @@ module glfw3d.Main;
 
 import std.experimental.logger;
 import glfw3d.glfw3;
+
 __gshared Logger glfw3dLog;
 
 /**
@@ -36,7 +37,7 @@ int[3] glfw3dVersion() {
 }
 
 /**
-*	Returns: GLFW version
+*	Returns: GLFW version string
 */
 string glfw3dVersionString() {
 	import std.string : fromStringz;
@@ -44,12 +45,13 @@ string glfw3dVersionString() {
 }
 
 private template Error(string e) {
+	import std.string : fromStringz;
 	const char[] Error = 
 	"case GLFW_" ~ e ~ ":"
-	~" try {glfw3dLog.log(\"GLFW error: \", desc);} catch {} break;";
+	~" try {glfw3dLog.log(\"GLFW error: "~ e ~"\");} catch {} break;";
 }
 
-extern(C) nothrow void glfw3dErrorCallback(int error, const(char)* desc) {
+private extern(C) nothrow void glfw3dErrorCallback(int error, const(char)* desc) {
 	switch(error) {
 		mixin(Error!("VERSION_UNAVAILABLE"));
 		mixin(Error!("NO_CURRENT_CONTEXT"));
@@ -86,5 +88,6 @@ void glfw3dInit() {
 	} else {
 		glfwSetErrorCallback(&glfw3dErrorCallback);
 	}
+	debug glfw3dLog.log("glfw3d initialized");
 }
 

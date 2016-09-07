@@ -22,12 +22,15 @@ class Joystick {
 
 	/**
 	*	Params:
-	*		j = GLFW_JOYSTIC_*
+	*		j = GLFW_JOYSTICK_*
 	*/
 	this(int j) {
 		this.joy = j;
 	}
 
+	/**
+	*	Returns: true if current joystick is present
+	*/
 	bool isPresent() {
 		if(glfwJoystickPresent(this.joy) == GLFW_TRUE) {
 			return true;
@@ -36,6 +39,9 @@ class Joystick {
 		}
 	}
 
+	/**
+	*	Returns: axes of current joystick
+	*/
 	float[] getAxes() {
 		int count;
 		const(float)* o = glfwGetJoystickAxes(this.joy, &count);
@@ -47,6 +53,9 @@ class Joystick {
 		return output;
 	}
 
+	/**
+	*	Returns: buttons of current joystick
+	*/
 	ubyte[] getButtons() {
 		int count;
 		const(ubyte)* o = glfwGetJoystickButtons(this.joy, &count);
@@ -58,12 +67,11 @@ class Joystick {
 		return output;
 	}
 
+	/**
+	*	Returns: name of curent joystick
+	*/
 	string getName() {
 		return glfwGetJoystickName(this.joy).fromStringz.idup;
-	}
-
-	GLFWjoystickfun setCallback(GLFWjoystickfun cb) {
-		return glfwSetJoystickCallback(cb);
 	}
 }
 
