@@ -111,7 +111,7 @@ class Monitor {
 		int k;
 		const(GLFWvidmode)* output = glfwGetVideoModes(this.monitor, &k);
 		if(!output || k == 0)
-			throw new glfw3dException("Cannot read vide modes");
+			throw new glfw3dException("Cannot read video modes");
 		VideoMode[] o;
 		for(int i; i < k; i++)
 			o ~= cast(VideoMode) output[i];
