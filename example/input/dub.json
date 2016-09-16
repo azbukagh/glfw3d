@@ -1,0 +1,15 @@
+{
+	"name": "input",
+	"authors": [
+		"Azbuka"
+	],
+	"dependencies": {
+		"glfw3d": {
+			"path": "../../"
+		}
+	},
+	"description": "glfw3d example",
+	"copyright": "Copyright © 2016, Azbuka",
+	"license": "MIT"
+}
+
