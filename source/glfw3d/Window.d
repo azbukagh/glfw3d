@@ -1,3 +1,6 @@
+/**
+*	Cursors and windows.
+*/
 module glfw3d.Window;
 
 import glfw3d.glfw3;

@@ -1,3 +1,8 @@
+/**
+*	GLFW3 functions.
+*	See_Also:
+*		$(LINK http://www.glfw.org/docs/latest/modules.html)
+*/
 module glfw3d.glfw3.func;
 
 import glfw3d.glfw3.type;

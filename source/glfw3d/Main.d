@@ -1,3 +1,6 @@
+/**
+*	Initialization and error handling.
+*/
 module glfw3d.Main;
 
 import std.experimental.logger;

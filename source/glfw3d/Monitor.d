@@ -1,3 +1,6 @@
+/**
+*	Monitors.
+*/
 module glfw3d.Monitor;
 
 import glfw3d.glfw3;

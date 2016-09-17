@@ -1,3 +1,6 @@
+/**
+*	Joysticks, keyboard and mouse.
+*/
 module glfw3d.Input;
 
 import glfw3d.glfw3;

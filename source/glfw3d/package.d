@@ -1,3 +1,6 @@
+/**
+*	Publically imports all hight-level modules.
+*/
 module glfw3d;
 
 public import glfw3d.Main;
