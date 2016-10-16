@@ -14,7 +14,7 @@
 			"buildOptions": ["syntaxOnly"],
 			"dflags": ["-c", "-Xfdocs.json"],
 			"postBuildCommands": [
-				"dub run scod -- generate-html docs.json ../azbukagh.github.io/glfw3d",
+				"dub run whammydoc -- generate-html docs.json ../azbukagh.github.io/glfw3d",
 				"rm docs.json __dummy.html"
 			]
 		}
