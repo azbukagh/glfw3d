@@ -129,4 +129,3 @@ void main() {
 
 	glfw3dTerminate();
 }
-
