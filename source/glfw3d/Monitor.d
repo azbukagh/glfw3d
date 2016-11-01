@@ -8,25 +8,47 @@ import glfw3d.Main;
 import std.string : fromStringz;
 
 /**
-*	Utility structs.
+*	Position of monitor's viewport on the virtual screen
 */
 struct MonitorPosition {
-	int x, y;
+	int x;
+	int y;
 }
-/// ditto
+
+/**
+*	Physical size of the monitor
+*/
 struct MonitorSize {
 	int widthMM, heightMM;
 }
-/// ditto
+
+/**
+*	Video mode of the monitor
+*/
 struct VideoMode {
+	/**
+	*	Width/height of the video mode
+	*/
 	int width;
+	/// ditto
 	int height;
+	/**
+	*	Bit depth of red/green/blue chanel
+	*/
 	int redBits;
+	/// ditto
 	int greenBits;
+	/// ditto
 	int blueBits;
+	/**
+	*	Refresh rate of the video mode (Hz)
+	*/
 	int refreshRate;
 }
-/// ditto
+
+/**
+*	Gamma ramp for a monitor.
+*/
 struct GammaRamp {
 	ushort* red;
 	ushort* green;
@@ -121,4 +143,3 @@ class Monitor {
 		return o;
 	}
 }
-
