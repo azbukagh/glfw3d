@@ -55,14 +55,14 @@ string glfw3dVersionString() {
 	return cast(string) glfwGetVersionString().fromStringz;
 }
 
-private template Error(string e) {
-	import std.string : fromStringz;
-	const char[] Error =
-	"case GLFW_" ~ e ~ ":" ~
-	"glfw3dErrorHappened = true; try {glfw3dLogger.log(\"GLFW error: \", desc.fromStringz);} catch {} break;";
-}
-
 private extern(C) nothrow void glfw3dErrorCallback(int error, const(char)* desc) {
+	template Error(string e) {
+		import std.string : fromStringz;
+		const char[] Error =
+		"case GLFW_" ~ e ~ ":" ~
+		"glfw3dErrorHappened = true; try {glfw3dLogger.log(\"GLFW error: \", desc.fromStringz);} catch {} break;";
+	}
+
 	switch(error) {
 		mixin(Error!("VERSION_UNAVAILABLE"));
 		mixin(Error!("NO_CURRENT_CONTEXT"));
