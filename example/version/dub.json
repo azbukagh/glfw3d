@@ -1,0 +1,14 @@
+{
+	"name": "version",
+	"authors": [
+		"Azbuka"
+	],
+	"description": "glfw3d example",
+	"copyright": "Copyright © 2016, Azbuka",
+	"license": "MIT",
+	"dependencies": {
+		"glfw3d": {
+			"path": "../../"
+		}
+	}
+}
