@@ -60,7 +60,7 @@ private extern(C) nothrow void glfw3dErrorCallback(int error, const(char)* desc)
 		import std.string : fromStringz;
 		const char[] Error =
 		"case GLFW_" ~ e ~ ":" ~
-		"glfw3dErrorHappened = true; try {glfw3dLogger.log(\"GLFW error: \", desc.fromStringz);} catch {} break;";
+		"glfw3dErrorHappened = true; try {glfw3dLogger.log(\"GLFW error: \", desc.fromStringz);} catch(Throwable) {} break;";
 	}
 
 	switch(error) {
@@ -76,7 +76,7 @@ private extern(C) nothrow void glfw3dErrorCallback(int error, const(char)* desc)
 		mixin(Error!("INVALID_ENUM"));
 
 		default:
-			try {glfw3dLogger.log("GLFW error: unknown");} catch {}
+			try {glfw3dLogger.log("GLFW error: unknown");} catch(Throwable) {}
 			break;
 	}
 }

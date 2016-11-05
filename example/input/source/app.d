@@ -180,11 +180,11 @@ extern(C) nothrow void key_callback(GLFWwindow* window,
 
 		try {
 			output.formattedWrite("%-(%s+%); %3d;", modifiers, scancode);
-		} catch {}
-		
+		} catch(Throwable) {}
+
 		try {
 			writeln(output.data);
-		} catch {}
+		} catch(Throwable) {}
 }
 
 
@@ -199,4 +199,3 @@ void main() {
 
 	glfw3dTerminate();
 }
-
