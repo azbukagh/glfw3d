@@ -3,7 +3,11 @@
 */
 module glfw3d.Monitor;
 
-import glfw3d.glfw3;
+version(Have_derelict_glfw3) {
+	import derelict.glfw3.glfw3;
+} else {
+	import glfw3d.glfw3;
+}
 import glfw3d.Main;
 import std.string : fromStringz;
 

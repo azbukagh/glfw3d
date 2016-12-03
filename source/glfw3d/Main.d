@@ -4,11 +4,18 @@
 module glfw3d.Main;
 
 import std.experimental.logger;
-import glfw3d.glfw3;
+version(Have_derelict_glfw3) {
+	import derelict.glfw3.glfw3;
+} else {
+	import glfw3d.glfw3;
+}
 import std.string : fromStringz;
 
 shared static this() {
 	glfw3dLogger = sharedLog;
+	version(Have_derelict_glfw3) {
+		DerelictGLFW3.load();
+	}
 }
 
 /**
@@ -67,7 +74,11 @@ private extern(C) nothrow void glfw3dErrorCallback(int error, const(char)* desc)
 		mixin(Error!("VERSION_UNAVAILABLE"));
 		mixin(Error!("NO_CURRENT_CONTEXT"));
 		mixin(Error!("FORMAT_UNAVAILABLE"));
-		mixin(Error!("NO_WINDOW_CONTEXT"));
+		version(Have_derelict_glfw3) {
+
+		} else {
+			mixin(Error!("NO_WINDOW_CONTEXT"));
+		}
 		mixin(Error!("NOT_INITIALIZED"));
 		mixin(Error!("API_UNAVAILABLE"));
 		mixin(Error!("PLATFORM_ERROR"));

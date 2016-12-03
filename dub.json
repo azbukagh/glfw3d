@@ -6,9 +6,18 @@
 	"description": "GLFW3 wrapper for D programming language",
 	"copyright": "Copyright © 2016 Azbuka",
 	"license": "MIT",
-	"libs": [
+	"libs-posix": [
 		"glfw3"
 	],
+	"libs-windows": [
+		"glfw3dll"
+	],
+	"dependencies": {
+		"derelict-glfw3" : {
+			"version": "~>4.0.0-alpha.3",
+			"optional": true
+		}
+	},
 	"buildTypes": {
 		"doc": {
 			"buildOptions": ["syntaxOnly"],
@@ -20,4 +29,3 @@
 		}
 	}
 }
-

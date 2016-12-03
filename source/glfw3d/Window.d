@@ -3,7 +3,11 @@
 */
 module glfw3d.Window;
 
-import glfw3d.glfw3;
+version(Have_derelict_glfw3) {
+	import derelict.glfw3.glfw3;
+} else {
+	import glfw3d.glfw3;
+}
 import glfw3d.Main;
 import glfw3d.Monitor;
 import std.string : fromStringz;
@@ -143,7 +147,7 @@ class Window {
 	/// ditto
 	this(int width,
 		int height,
-		string title, 
+		string title,
 		GLFWmonitor* mon,
 		GLFWwindow* share) {
 			this.window = glfwCreateWindow(width,
@@ -523,4 +527,3 @@ class Window {
 		return glfwSetDropCallback(this.window, cb);
 	}
 }
-
