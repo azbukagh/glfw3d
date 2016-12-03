@@ -1,6 +1,5 @@
 import std.stdio;
 import glfw3d;
-import glfw3d.glfw3;
 import derelict.opengl3.gl3;
 import std.math;
 import std.string;

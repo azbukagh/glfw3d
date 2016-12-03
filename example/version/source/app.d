@@ -1,6 +1,5 @@
 import std.stdio;
-import glfw3d.Main;
-import glfw3d.glfw3.type;
+import glfw3d;
 
 void main() {
 	writefln("Compiled against GLFW %d.%d.%d",

@@ -1,6 +1,5 @@
 import std.stdio;
 import glfw3d;
-import glfw3d.glfw3;
 import std.array;
 import std.format;
 
