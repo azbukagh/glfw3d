@@ -7,6 +7,22 @@ module glfw3d.glfw3.func;
 
 import glfw3d.glfw3.type;
 
+version (Have_erupted) {
+	import erupted : VkResult, VkInstance, VkPhysicalDevice, VkAllocationCallbacks, VkSurfaceKHR;
+
+	version = GLFW3D_VULKAN;
+}
+else version (Have_derelict_vulkan) {
+	import derelict.vulkan : VkResult, VkInstance, VkPhysicalDevice, VkAllocationCallbacks, VkSurfaceKHR;
+
+	version = GLFW3D_VULKAN;
+}
+else version (Have_d_vulkan) {
+	import dvulkan : VkResult, VkInstance, VkPhysicalDevice, VkAllocationCallbacks, VkSurfaceKHR;
+
+	version = GLFW3D_VULKAN;
+}
+
 extern(C) nothrow {
 	int glfwInit();
 	void glfwTerminate();

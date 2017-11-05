@@ -16,6 +16,18 @@
 		"derelict-glfw3" : {
 			"version": "~>4.0.0-alpha.3",
 			"optional": true
+		},
+		"erupted" : {
+			"version": "*",
+			"optional": true
+		},
+		"derelict-vulkan" : {
+			"version": "*",
+			"optional": true
+		},
+		"d-vulkan" : {
+			"version": "*",
+			"optional": true
 		}
 	},
 	"buildTypes": {
